@@ -1,15 +1,8 @@
-import { defineConfig, devices } from '@playwright/test';
+import { devices } from "@playwright/test";
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// import dotenv from 'dotenv';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+require('dotenv').config();
+const { defineConfig } = require('@playwright/test');
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
   outputDir: 'test-results',
   testDir: './tests',
@@ -20,10 +13,10 @@ export default defineConfig({
   reporter: 'html',
   use: {
     headless: false,
-    baseURL: 'https://qauto.forstudy.space/',
+    baseURL: process.env.BASE_URL,
     httpCredentials: {
-      username: 'guest',
-      password: 'welcome2qauto'
+      username: process.env.HTTP_USERNAME,
+      password: process.env.HTTP_PASSWORD
     },
     trace: 'on',
     testIdAttribute: 'qa-dont-touch'
