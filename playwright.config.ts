@@ -35,7 +35,7 @@ export default defineConfig({
     },
     {
       name: 'example',
-      testDir: './tests/storage',
+      testDir: './tests/apiTests',
       use: {
         ...devices['Desktop Chrome'],
         storageState: 'storageState.json'
