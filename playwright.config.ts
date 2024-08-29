@@ -6,7 +6,7 @@ const { defineConfig } = require('@playwright/test');
 
 export default defineConfig({
   outputDir: 'test-results',
-  testDir: './tests/storage',
+  testDir: './tests',
   globalSetup: 'global-setup.ts',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -14,7 +14,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    headless: false,
+    headless: true,
     baseURL: process.env.BASE_URL,
     httpCredentials: {
       username: process.env.HTTP_USERNAME!,
